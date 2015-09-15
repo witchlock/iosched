@@ -49,6 +49,7 @@ public class SessionListUiTest extends InstrumentationTestCase {
     @Test
     public void authenticateAccount(){
 
+
     }
 
     private String getLauncherPackageName() {

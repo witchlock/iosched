@@ -1,0 +1,1 @@
+appium --no-reset

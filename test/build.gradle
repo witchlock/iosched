@@ -1,0 +1,36 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'io.appium:java-client:3.1.0'
+    testCompile 'info.cukes:cucumber-junit:1.2.3'
+    testCompile 'info.cukes:cucumber-java:1.2.3'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+}
+
+task startAppium(type: Exec) {
+    println 'Starting appium server'
+//    workingDir ''
+    commandLine './startAppium.sh'
+}
+
+//import groovy.json.JsonSlurper
+//def ping() {
+//    def p = ['curl', "http://localhost:8081/api/storage/libs-release-local?list&deep=1\""].execute()
+//    def json = new JsonSlurper().parseText(p.text))
+//}
+
+test {
+    doFirst {
+        println 'Testinggggg'
+    }
+
+    include 'sk/demo/junit/**'
+}
+
+test.dependsOn(startAppium)
