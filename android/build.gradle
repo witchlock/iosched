@@ -30,6 +30,7 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 21
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
@@ -97,5 +98,13 @@ dependencies {
        Drive appdata. When we start using AppData through GMS,
        they should be removed. */
     compile 'com.google.http-client:google-http-client-gson:1.+'
-    compile 'com.google.apis:google-api-services-drive:+'
+    compile ('com.google.apis:google-api-services-drive:+'){
+        exclude group: 'com.android.support:support-annotations'
+    }
+
+    androidTestCompile 'com.android.support.test:runner:0.3'
+//    androidTestCompile 'com.android.support.test:rules:0.3'
+//    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
+    androidTestCompile 'org.hamcrest:hamcrest-integration:1.3'
 }
