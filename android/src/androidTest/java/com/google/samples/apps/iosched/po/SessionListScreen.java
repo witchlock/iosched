@@ -1,4 +1,4 @@
-package po;
+package com.google.samples.apps.iosched.po;
 
 import android.support.test.uiautomator.UiCollection;
 import android.support.test.uiautomator.UiDevice;

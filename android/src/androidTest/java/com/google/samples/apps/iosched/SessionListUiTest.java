@@ -1,4 +1,4 @@
-package runner;
+package com.google.samples.apps.iosched;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,10 +18,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import po.MenuRight;
-import po.SessionDetails;
-import po.SessionListScreen;
-import po.WelcomeScreen;
+import com.google.samples.apps.iosched.po.MenuRight;
+import com.google.samples.apps.iosched.po.SessionDetails;
+import com.google.samples.apps.iosched.po.SessionListScreen;
+import com.google.samples.apps.iosched.po.WelcomeScreen;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
@@ -33,10 +33,14 @@ import static org.hamcrest.core.Is.is;
 
 @RunWith(AndroidJUnit4.class)
 @SdkSuppress(minSdkVersion = 18)
-public class SessionListUiTest extends InstrumentationTestCase {
+public class SessionListUiTest {
     private static final long LAUNCH_TIMEOUT = 5000;
     private static final String GOOGLE_IO_APP_PACKAGE = "com.google.samples.apps.iosched";
     private UiDevice mDevice;
+
+    public SessionListUiTest() {
+    }
+
 
     @Before
     public void setUp() {

@@ -8,7 +8,7 @@ Google IO App UI Tests
 
 #Test folder
 - `src/androidTest/`
-	- `po` - application screen objects
+	- `com.google.samples.apps.iosched.po` - application screen objects
 	- `runner` - uiautomator tests
 - `test_specs.md`
 	notes of test scenarios
