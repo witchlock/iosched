@@ -15,6 +15,7 @@ public class MenuRight extends MyPageObject {
     public MenuRight(UiDevice mDevice) {
         super(mDevice);
     }
+
     public void explore() throws UiObjectNotFoundException {
         exploreOption.clickAndWaitForNewWindow(ACTION_TIMEOUT);
     }

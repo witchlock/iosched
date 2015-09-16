@@ -9,7 +9,7 @@ Google IO App UI Tests
 #Test folder
 - `src/androidTest/`
 	- `com.google.samples.apps.iosched.po` - application screen objects
-	- `runner` - uiautomator tests
+	- `SessionListUitTest.java` - uiautomator test
 - `test_specs.md`
 	notes of test scenarios
 - `README.md`
@@ -18,7 +18,8 @@ Google IO App UI Tests
 #Run tests
 
 	Gradle Command
-	- `./gradlew cC`
+	- `cd $PROJECT_DIR/android`
+	- `./gradlew cC` or `gradle cC`
 
 	Android Studio
 	- Right click and run "SessionListUiTest.java"

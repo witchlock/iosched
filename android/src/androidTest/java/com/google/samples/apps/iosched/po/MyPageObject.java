@@ -24,4 +24,8 @@ abstract class MyPageObject {
         textField.setText(text);
         mDevice.pressBack();
     }
+
+    public void back() {
+        mDevice.pressBack();
+    }
 }

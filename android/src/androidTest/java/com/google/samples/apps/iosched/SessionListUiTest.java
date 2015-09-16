@@ -9,19 +9,17 @@ import android.support.test.filters.SdkSuppress;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
-import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.Until;
-import android.test.InstrumentationTestCase;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import com.google.samples.apps.iosched.po.MenuRight;
 import com.google.samples.apps.iosched.po.SessionDetails;
 import com.google.samples.apps.iosched.po.SessionListScreen;
 import com.google.samples.apps.iosched.po.WelcomeScreen;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
@@ -40,7 +38,6 @@ public class SessionListUiTest {
 
     public SessionListUiTest() {
     }
-
 
     @Before
     public void setUp() {
@@ -68,14 +65,13 @@ public class SessionListUiTest {
         acceptWelcome();
 
         SessionListScreen sessionListScreen = new SessionListScreen(mDevice);
-        UiObject topSession = sessionListScreen.getTopSession();
-        topSession.clickAndWaitForNewWindow();
+        sessionListScreen.clickSession(sessionListScreen.getTopSession());
 
         SessionDetails sessionDetails = new SessionDetails(mDevice);
         assertThat(sessionDetails.getSessionTitle().getText(), is("Keynote"));
 
-        mDevice.pressBack();
-        assertThat(topSession.isEnabled(), is(true));
+        sessionDetails.back();
+        assertThat(sessionListScreen.getTopSession().isEnabled(), is(true));
 
     }
 
@@ -84,18 +80,19 @@ public class SessionListUiTest {
         acceptWelcome();
 
         SessionListScreen sessionListScreen = new SessionListScreen(mDevice);
-//        sessionListScreen.scrollUpAndDown();
-//        sessionListScreen.sortSessionByTheme("Design");
-//        sessionListScreen.getTopSession().clickAndWaitForNewWindow();
-//
-//        SessionDetails sessionDetails = new SessionDetails(mDevice);
-//        assertThat(sessionDetails.hasTheme("Design"), is(true));
-//
-//        mDevice.pressBack();
-//        sessionListScreen.sortSessionByTopics("Android");
-//        sessionListScreen.getTopSession().clickAndWaitForNewWindow();
-//
-//        assertThat(sessionDetails.hasTopics("Android"), is(true));
+        sessionListScreen.scrollUpAndDown();
+
+        sessionListScreen.sortSessionByTheme("Design");
+        sessionListScreen.getTopSession().clickAndWaitForNewWindow();
+
+        SessionDetails sessionDetails = new SessionDetails(mDevice);
+        assertThat(sessionDetails.hasLabel("Design"), is(true));
+        sessionDetails.back();
+
+        sessionListScreen.sortSessionByTopics("Android");
+        sessionListScreen.getTopSession().clickAndWaitForNewWindow();
+
+        assertThat(sessionDetails.hasLabel("Android"), is(true));
     }
 
     private void acceptWelcome() throws UiObjectNotFoundException {
