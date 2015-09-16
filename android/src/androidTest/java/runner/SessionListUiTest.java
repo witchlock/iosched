@@ -59,7 +59,7 @@ public class SessionListUiTest extends InstrumentationTestCase {
     }
 
     @Test
-    public void authenticateAccount() throws UiObjectNotFoundException {
+    public void viewTopSessionDetails() throws UiObjectNotFoundException {
 
         acceptWelcome();
 
@@ -73,6 +73,25 @@ public class SessionListUiTest extends InstrumentationTestCase {
         mDevice.pressBack();
         assertThat(topSession.isEnabled(), is(true));
 
+    }
+
+    @Test
+    public void viewSessionListAndSortByThemeAndTopics() throws UiObjectNotFoundException {
+        acceptWelcome();
+
+        SessionListScreen sessionListScreen = new SessionListScreen(mDevice);
+//        sessionListScreen.scrollUpAndDown();
+//        sessionListScreen.sortSessionByTheme("Design");
+//        sessionListScreen.getTopSession().clickAndWaitForNewWindow();
+//
+//        SessionDetails sessionDetails = new SessionDetails(mDevice);
+//        assertThat(sessionDetails.hasTheme("Design"), is(true));
+//
+//        mDevice.pressBack();
+//        sessionListScreen.sortSessionByTopics("Android");
+//        sessionListScreen.getTopSession().clickAndWaitForNewWindow();
+//
+//        assertThat(sessionDetails.hasTopics("Android"), is(true));
     }
 
     private void acceptWelcome() throws UiObjectNotFoundException {
